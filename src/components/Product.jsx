@@ -1,7 +1,3 @@
-import { Snackbar } from "@mui/material";
-
-
-
 function Product (props) {
 
 
@@ -19,7 +15,7 @@ function handleClick() {
           <div>
             <h1 className="text-lg font-semibold mb-2 ">{props.title}</h1>
           </div>
-          <p className="text-blue-400 font-semibold mb-4">${props.price}
+          <p className="text-blue-400 font-semibold mb-4">Rs.{props.price}
           {props.price}
           </p>
           <div>

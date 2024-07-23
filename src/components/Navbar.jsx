@@ -2,7 +2,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 
 function Navbar(props) {
+
   return (
+    <>
     <div className="flex justify-between gap-4 sticky top-0 backdrop-filter backdrop-blur-lg bg-opacity-30 p-4 border-b border-gray-200">
       <div><a href='/'>Home</a> </div>
       <div><a href='/'> Services</a></div>
@@ -29,10 +31,15 @@ function Navbar(props) {
             position: 'relative'
           }}
         >
-          <ShoppingCartIcon />
+          <ShoppingCartIcon
+          onClick = {props.handleClick}
+          className='cursor-pointer' />         
         </Badge>
+
         </div>
     </div>
+
+  </>
   );
 }
 
