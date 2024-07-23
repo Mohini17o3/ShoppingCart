@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import Navbar from "./Navbar";
 import Product from "./Product";
+import { cartContext } from "./CartContext";
+
 
 function Landing() {
+
   const [product, setProduct] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [sidebar, setShowSidebar] = useState(false);
-  const [orderSummary, setOrderSummary] = useState([]);
-  const [Tprice, setTPrice] = useState(0);
+  // adding on the context here 
 
-  function handleOrderSummary() {
-    let price = 0;
-    const summary = cart.map((item) => {
-      price += item.price;
-      return item;
-    });
 
-    setOrderSummary(summary);
-    setTPrice(price);
-    setCart([]);
-  }
-
-  function handleClick() {
-    setShowSidebar(!sidebar);
-  }
+  const {cart , sidebar , handleAddToCart , handleClick , handleOrderSummary, Tprice , orderSummary} = useContext(cartContext);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -37,10 +24,7 @@ function Landing() {
       });
   }, []);
 
-  const handleAddToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
+  
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50">
