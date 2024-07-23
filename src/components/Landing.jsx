@@ -6,20 +6,19 @@ function Landing() {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [sidebar, setShowSidebar] = useState(false);
-  let [orderSummary , setOrderSummary] = useState ([]);
-  let [Tprice , setTPrice] = useState(0);
-   
-  let price = 0 ;
+  const [orderSummary, setOrderSummary] = useState([]);
+  const [Tprice, setTPrice] = useState(0);
 
-  function handleOrderSummary () {
-     orderSummary = cart ;
-     orderSummary.forEach(element => {
-      price+= element.price;
+  function handleOrderSummary() {
+    let price = 0;
+    const summary = cart.map((item) => {
+      price += item.price;
+      return item;
+    });
 
-     });
-     setOrderSummary(orderSummary);
-     setTPrice(price);
-     console.log(price);
+    setOrderSummary(summary);
+    setTPrice(price);
+    setCart([]);
   }
 
   function handleClick() {
@@ -76,18 +75,30 @@ function Landing() {
                   <p>Rs.{item.price}</p>
                 </div>
               </div>
-
             ))
           )}
-       {cart.length>0 ? 
-       <button
-        className="bg-black text-white p-2 rounded-md hover:bg-white hover:text-black transition"
-        onClick={handleOrderSummary}
-        >
-        
-        Checkout</button> : " " }   
-
-
+          {cart.length > 0 && (
+            <button
+              className="bg-black text-white p-2 rounded-md hover:bg-white hover:text-black transition"
+              onClick={handleOrderSummary}
+            >
+              Checkout
+            </button>
+          )}
+          {orderSummary.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-2">Order Summary</h3>
+              {orderSummary.map((item, index) => (
+                <div key={index} className="flex items-center justify-between mb-2">
+                  <p>{item.title}</p>
+                  <p>Rs.{item.price}</p>
+                </div>
+              ))}
+              <div className="border-t border-gray-600 pt-2">
+                <p className="text-lg font-bold">Total: Rs.{Tprice}</p>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>

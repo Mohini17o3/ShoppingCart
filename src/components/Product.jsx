@@ -8,7 +8,7 @@ function handleClick() {
 }
 
     return (
-       <div className="grid rows-4 m-2 p-2 max-h-xs bg-gray-800 border-4 hover:cursor-pointer">  
+       <div className="grid rounded-lg rows-4 m-2 p-2 max-h-xs bg-gray-800 border-4 hover:cursor-pointer">  
           <div className="row-span-2 flex justify-center items-center ">
           <img className=" h-80 w-80 shadow-lg rounded-md flex m-4 p-2 border-2 hover:translate-y-1 transition ease-in-out delay-150 hover:scale-110" src={props.image}></img>
           </div>
