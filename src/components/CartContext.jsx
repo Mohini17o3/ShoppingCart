@@ -42,13 +42,16 @@ function CartProvider ({children}) {
 
 
   return (
-    <cartContext.Provider
-    value = {{
+
+
+<cartContext.Provider
+      value = {{
         cart , sidebar , orderSummary , Tprice, handleAddToCart , handleClick , handleOrderSummary , 
-    }}
+       }}
      >
-         {children}
-      </cartContext.Provider>
+  {children}
+</cartContext.Provider>
+
   )
 
 
